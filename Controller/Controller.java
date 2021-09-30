@@ -1,5 +1,8 @@
-package courseRegistration;
-import javax.swing.*;
+package courseRegistration.Controller;
+
+import courseRegistration.Model.Model;
+import courseRegistration.View.View;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 

@@ -1,4 +1,4 @@
-package courseRegistration;
+package courseRegistration.Model;
 
 import java.util.ArrayList;
 
@@ -47,7 +47,7 @@ public class CourseCat {
 	public void createOffering(Course theCourse, int secNum, int secCap) {
 		if (theCourse != null) {
 			Offering theOffering = new Offering(secNum, secCap);
-			theOffering.setTheCourse(theCourse);   //I set theCourse object reference in the courseRegistration.Course
+			theOffering.setTheCourse(theCourse);   //I set theCourse object reference in the courseRegistration.Model.Course
 			theCourse.addOffering(theOffering);
 		}
 	}

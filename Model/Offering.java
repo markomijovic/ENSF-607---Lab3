@@ -1,4 +1,4 @@
-package courseRegistration;
+package courseRegistration.Model;
 
 import java.util.ArrayList;
 

@@ -1,4 +1,7 @@
 package courseRegistration;
+import courseRegistration.Controller.Controller;
+import courseRegistration.Model.Model;
+import courseRegistration.View.View;
 
 public class CourseApp {
     public static void main (String [] args) {

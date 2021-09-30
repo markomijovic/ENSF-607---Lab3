@@ -1,4 +1,4 @@
-package courseRegistration;
+package courseRegistration.Model;
 
 import java.util.ArrayList;
 
@@ -14,7 +14,7 @@ public class Course {
 		setCourseNum (courseNum);
 		
 		//This is not composition, because we are not constructing 
-		//an courseRegistration.Offering Object(i.e. not calling the constructor of courseRegistration.Offering).
+		//an courseRegistration.Model.Offering Object(i.e. not calling the constructor of courseRegistration.Model.Offering).
 		//We are simply constructing an array
 		preReq = new ArrayList<Course>();
 		offeringList = new ArrayList <Offering>();

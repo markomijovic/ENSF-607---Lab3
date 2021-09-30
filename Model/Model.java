@@ -1,4 +1,4 @@
-package courseRegistration;
+package courseRegistration.Model;
 
 import java.util.HashMap;
 
@@ -9,7 +9,7 @@ public class Model {
 
     public Model() {
         this.cat = new CourseCat();  //This loads the courses from our "DB"
-        this.students = new HashMap<>(); // students database. courseRegistration.Student ID acts as key
+        this.students = new HashMap<>(); // students database. courseRegistration.Model.Student ID acts as key
         Student st1 = new Student("Jimmy Conway", 1);
         Student st2 = new Student("Henry Hill", 2);
         Student st3 = new Student("Tommy DeVito", 3);

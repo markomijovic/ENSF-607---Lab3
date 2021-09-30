@@ -1,4 +1,4 @@
-package courseRegistration;
+package courseRegistration.Model;
 
 import java.util.ArrayList;
 
@@ -41,11 +41,11 @@ public class Student {
 				off.removeRegistration(reg);
 				regList.remove(i);
 				reg = null;
-				System.out.println("courseRegistration.Student " + getStudentName() + " has been successfully removed from course " + course.getCourseName()+course.getCourseNum());
+				System.out.println("courseRegistration.Model.Student " + getStudentName() + " has been successfully removed from course " + course.getCourseName()+course.getCourseNum());
 				return;
 			}
 		}
-		System.out.println("courseRegistration.Student " + getStudentName() + " cannot be removed because they were not enrolled in course " + course.getCourseName()+course.getCourseNum());
+		System.out.println("courseRegistration.Model.Student " + getStudentName() + " cannot be removed because they were not enrolled in course " + course.getCourseName()+course.getCourseNum());
 		return;
 	}
 
@@ -90,7 +90,7 @@ public class Student {
 	}
 
 	public String showAllCoursesTaken() {
-		String st = "courseRegistration.Student " + getStudentName() + " is enrolled in: \n";
+		String st = "courseRegistration.Model.Student " + getStudentName() + " is enrolled in: \n";
 		for (Registration r : regList) {
 			st += r.getTheOffering().toString() + "|\n";
 		}
