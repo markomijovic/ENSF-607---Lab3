@@ -41,7 +41,6 @@ public class CourseCat {
 				return c;
 			}
 		}
-		// System.err.println("courseRegistration.Course " + courseName + " " + courseNum + " does NOT exist!");
 		return null;
 	}
 

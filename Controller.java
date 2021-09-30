@@ -15,16 +15,21 @@ public class Controller {
                 new ViewAllCoursesListener(), new ViewAllStudentCoursesListener(), new QuitListener(), new SubmitListener());
     }
 
+    /**
+     * OPTION 1
+     */
     class SearchCatCourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
-            // TODO Auto-generated method stub
             theView.setMenuSelected(1);
             theView.promptCourseName();
             theView.promptCourseNumber();
         }
     }
 
+    /**
+     * OPTION 2
+     */
     class AddCourseListener implements ActionListener {
         @Override
         public void actionPerformed(ActionEvent e) {
@@ -36,6 +41,9 @@ public class Controller {
         }
     }
 
+    /**
+     * OPTION 3
+     */
     class RemoveCourseListener implements ActionListener {
          @Override
         public void actionPerformed(ActionEvent e) {
@@ -46,26 +54,34 @@ public class Controller {
          }
     }
 
+    /**
+     * OPTION 4
+     */
     class ViewAllCoursesListener implements ActionListener {
          @Override
         public void actionPerformed(ActionEvent e) {
-             theView.setMenuSelected(4);
+             theView.outputToUser(theModel.viewCoursesInCatalogue());
          }
     }
 
+    /**
+     * OPTION 5
+     */
     class ViewAllStudentCoursesListener implements ActionListener {
          @Override
         public void actionPerformed(ActionEvent e) {
              theView.setMenuSelected(5);
              theView.promptStudentID();
-
          }
     }
 
+    /**
+     * OPTION 6
+     */
     class QuitListener implements ActionListener {
          @Override
         public void actionPerformed(ActionEvent e) {
-             theView.setMenuSelected(6);
+             System.exit(0);
          }
     }
 
@@ -73,10 +89,43 @@ public class Controller {
         @Override
         public void actionPerformed(ActionEvent e) {
             int selection = theView.getMenuSelected();
+            String outputToUser = "";
+            String name = "";
+            int number = -1;
+            int section = -1;
+            int studentID = -1;
+            System.out.println(selection);
             switch (selection) {
                 case 1:
-                    theModel.cat.searchCat(theView.getCourseName(), theView.getCourseNumber());
+                    name = theView.getCourseName();
+                    number = theView.getCourseNumber();
+                    outputToUser = theModel.searchCatCourses(name, number)
+                            ? String.format("Course %s - %d exists!", name, number)
+                            : String.format("Course %s - %d does not exist!", name, number);
+                    break;
+                case 2:
+                    name = theView.getCourseName();
+                    number = theView.getCourseNumber();
+                    section = theView.getCourseSection();
+                    studentID = theView.getStudentID();
+                    outputToUser = theModel.addCourseToStudent(name, number, section, studentID)
+                            ? String.format("Student: %s was successfully registered in %s - %d in section %d", theModel.getStudentName(studentID), name, number, section)
+                            : String.format("Student: %s was not registered in %s - %d in section %d", theModel.getStudentName(studentID), name, number, section);
+                    break;
+                case 3:
+                    name = theView.getCourseName();
+                    number = theView.getCourseNumber();
+                    studentID = theView.getStudentID();
+                    outputToUser = theModel.removeStudentFromCourse(name, number, studentID)
+                            ? String.format("Student: %s was successfully removed from %s - %d", theModel.getStudentName(studentID), name, number)
+                            : String.format("Student: %s could not be removed from %s - %d ", theModel.getStudentName(studentID), name, number);
+                    break;
+                case 5:
+                    studentID = theView.getStudentID();
+                    outputToUser = theModel.viewStudentCourses(studentID);
+                    break;
             }
+            theView.outputToUser(outputToUser);
         }
     }
 }

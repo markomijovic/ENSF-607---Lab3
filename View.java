@@ -20,6 +20,7 @@ public class View extends JFrame {
     private JTextField courseNumberText;
     private JTextField courseSectionText;
     private JTextField studentIDText;
+    private JLabel outputToUser;
     private JLabel courseNameLabel;
     private JLabel courseNumberLabel;
     private JLabel courseSectionLabel;
@@ -40,40 +41,78 @@ public class View extends JFrame {
         add(GUI);
     }
 
+    /**
+     *
+     * @param menuSelected
+     */
     public void setMenuSelected(int menuSelected) { this.menuSelected = menuSelected; }
+
+    /**
+     *
+     * @return
+     */
     public int getMenuSelected() { return this.menuSelected;}
+
+    public void outputToUser(String output) {
+        outputToUser = new JLabel(output);
+        GUI.add(outputToUser);
+        refreshGUI();
+    }
+
+    /**
+     *
+     * @param textField
+     * @param labelField
+     */
     private void updateGUI(JTextField textField, JLabel labelField) {
         GUI.add(labelField);
         GUI.add(textField);
-        SwingUtilities.updateComponentTreeUI(this);
+        refreshGUI();
     }
 
-    // CALLED ON BUTTON MENU CLICK
+    /**
+     *
+     */
     public void promptCourseName() {
         showSubmitButton();
         courseNameText = new JTextField(10);
         courseNameLabel = new JLabel("Enter Course Name eg. ENGG, PHYS, ENSF: ");
         updateGUI(courseNameText, courseNameLabel);
     }
+
+    /**
+     *
+     */
     public void promptCourseNumber() {
         showSubmitButton();
         courseNumberText = new JTextField(10);
         courseNumberLabel = new JLabel("Enter Course Number eg. 233, 607, 259, 123: ");
         updateGUI(courseNumberText, courseNumberLabel);
     }
+
+    /**
+     *
+     */
     public void promptCourseSection() {
         showSubmitButton();
         courseSectionText = new JTextField(10);
         courseSectionLabel = new JLabel("Enter Course Section from [1-2]: ");
         updateGUI(courseSectionText, courseSectionLabel);
     }
+
+    /**
+     *
+     */
     public void promptStudentID() {
         showSubmitButton();
         studentIDText = new JTextField(10);
-        courseNameLabel = new JLabel("Enter Student ID from [1-4]: ");
-        updateGUI(studentIDText, courseNameLabel);
+        studentIDLabel = new JLabel("Enter Student ID from [1-4]: ");
+        updateGUI(studentIDText, studentIDLabel);
     }
 
+    /**
+     *
+     */
     private void showSubmitButton() {
         if (!submitShown) {
             this.GUI.add(submitButton);
@@ -82,13 +121,27 @@ public class View extends JFrame {
     }
 
     // ALL BELOW CALLED ON SUBMIT
-    // Integer.parseInt(firstNumber.getText()
-    public String getCourseName() { return courseNameText.getText(); }
+    /**
+     *
+     * @return
+     */
+    public String getCourseName() { return courseNameText.getText().toUpperCase(); }
     public int getCourseNumber() { return Integer.parseInt(courseNumberText.getText()); }
     public int getCourseSection() { return Integer.parseInt(courseSectionText.getText()); }
     public int getStudentID() { return Integer.parseInt(studentIDText.getText()); }
 
     // ADD ACTION LISTENERS
+
+    /**
+     *
+     * @param searchListener
+     * @param addListener
+     * @param removeListener
+     * @param allCourseListener
+     * @param studentCourseListener
+     * @param quitListener
+     * @param submitListener
+     */
     public void addActionListener (ActionListener searchListener, ActionListener addListener,
                                    ActionListener removeListener, ActionListener allCourseListener,
                                    ActionListener studentCourseListener, ActionListener quitListener, ActionListener submitListener) {
@@ -101,36 +154,7 @@ public class View extends JFrame {
         submitButton.addActionListener(submitListener);
     }
 
-//    private CourseRegApp.UserPrompt userPrompt = new CourseRegApp.UserPrompt();
-//    class UserPrompt {
-//        // Helper class for user prompts for specific entries
-//        protected String promptCourseName() {
-//            String userInput;
-//            Scanner input = new Scanner(System.in);
-//            System.out.println("Enter course name and press enter: (ie: ENGG, ENSF, etc.)");
-//            userInput = input.next();
-//            return userInput.toUpperCase();
-//        }
-//        protected int promptCourseNum() {
-//            int userInput;
-//            Scanner input = new Scanner(System.in);
-//            System.out.println("Enter course number and press enter: (ie: 233, 607, etc.)");
-//            userInput = input.nextInt();
-//            return userInput;
-//        }
-//        protected int promptCourseSection() {
-//            int userInput;
-//            Scanner input = new Scanner(System.in);
-//            System.out.println("Enter course section (1 or 2) and press enter: ");
-//            userInput = input.nextInt();
-//            return userInput;
-//        }
-//        protected int promptStudentID() {
-//            int userInput;
-//            Scanner input = new Scanner(System.in);
-//            System.out.println("Enter student ID [1 to 4] (4 students in the fake database)");
-//            userInput = input.nextInt();
-//            return userInput;
-//        }
-//    }
+    private void refreshGUI() {
+        SwingUtilities.updateComponentTreeUI(this);
+    }
 }

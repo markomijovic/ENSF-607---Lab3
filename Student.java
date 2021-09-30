@@ -92,7 +92,7 @@ public class Student {
 	public String showAllCoursesTaken() {
 		String st = "courseRegistration.Student " + getStudentName() + " is enrolled in: \n";
 		for (Registration r : regList) {
-			st += r.getTheOffering().toString() + "\n";
+			st += r.getTheOffering().toString() + "|\n";
 		}
 		return st;
 	}
