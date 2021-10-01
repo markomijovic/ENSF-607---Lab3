@@ -1,7 +1,7 @@
-package courseRegistration.Controller;
+package Controller;
 
-import courseRegistration.Model.Model;
-import courseRegistration.View.View;
+import Model.Model;
+import View.View;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;

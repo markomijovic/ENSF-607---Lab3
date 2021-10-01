@@ -1,4 +1,4 @@
-package courseRegistration.Model;
+package Model;
 
 public class Registration {
 	

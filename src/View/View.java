@@ -1,5 +1,5 @@
 
-package courseRegistration.View;
+package View;
 
 import java.awt.*;
 import java.awt.event.ActionListener;
