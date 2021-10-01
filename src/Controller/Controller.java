@@ -1,6 +1,6 @@
 package Controller;
 
-import Model.Model;
+import Model.DBInterface;
 import View.View;
 
 import java.awt.event.ActionEvent;
@@ -9,9 +9,9 @@ import java.awt.event.ActionListener;
 public class Controller {
 
     View theView;
-    Model theModel;
+    DBInterface theModel;
 
-    public Controller (View theView, Model theModel) {
+    public Controller (View theView, DBInterface theModel) {
         this.theModel = theModel;
         this.theView = theView;
         theView.addActionListener(new SearchCatCourseListener(), new AddCourseListener(), new RemoveCourseListener(),
@@ -128,6 +128,7 @@ public class Controller {
                     outputToUser = theModel.viewStudentCourses(studentID);
                     break;
             }
+            // Update view
             theView.outputToUser(outputToUser);
         }
     }

@@ -1,13 +1,13 @@
 package App;
 import Controller.Controller;
-import Model.Model;
+import Model.DBInterface;
 import View.View;
 
 public class CourseApp {
     public static void main (String [] args) {
 
         View theView = new View ();
-        Model theModel = new Model ();
+        DBInterface theModel = new DBInterface();
         Controller theController = new Controller (theView, theModel);
         theView.setVisible(true);
     }

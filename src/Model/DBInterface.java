@@ -2,12 +2,12 @@ package Model;
 
 import java.util.HashMap;
 
-public class Model {
+public class DBInterface {
 
     private CourseCat cat;
     private HashMap<Integer, Student> students;
 
-    public Model() {
+    public DBInterface() {
         this.cat = new CourseCat();  //This loads the courses from our "DB"
         this.students = new HashMap<>(); // students database. courseRegistration.Model.Student ID acts as key
         Student st1 = new Student("Jimmy Conway", 1);
@@ -46,7 +46,7 @@ public class Model {
     }
 
     /**
-     * User option 1 - Works
+     * User option 1
      */
     public boolean searchCatCourses(String courseName, int courseNum) {
         Course c;
@@ -55,7 +55,7 @@ public class Model {
     }
 
     /**
-     * Return course
+     * Helper - Return course
      */
     private Course getCatCourse(String courseName, int courseNum) {
         Course c;
