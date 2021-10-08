@@ -64,7 +64,7 @@ public class CourseCat {
 	public String toString() {
 		String st = "Courses in the catalogue are: ";
 		for (Course c : courseList) {
-			st += c.getCourseName() + c.getCourseNum() + ",";
+			st += c.getCourseName() + c.getCourseNum() + ", ";
 		}
 		return st.substring(0, st.length() - 1);
 	}
